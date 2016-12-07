@@ -1,0 +1,25 @@
+version: '2'
+services:
+  mayfair:
+    image: aweb
+    ports:
+     - '8000:80'
+    volumes:
+     - ./src:/src
+    environment:
+      - NAME=mayfair
+      - OTHER=victoria
+    # use external_links instead
+    logging:
+      driver: "json-file"
+  victoria:
+    image: aweb
+    ports:
+     - '8001:80'
+    volumes:
+     - ./src:/src
+    environment:
+      - NAME=victoria
+      - OTHER=mayfair
+    logging:
+      driver: "json-file"
